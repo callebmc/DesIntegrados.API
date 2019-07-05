@@ -173,6 +173,8 @@ namespace DesIntegrados.API.Features
             //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
             CloudBlockBlob blockBlob = container.GetBlockBlobReference("desintegradosimages.bmp");
             await blockBlob.UploadFromFileAsync(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
+
+            /*https://dotnetcoretutorials.com/2017/06/17/using-azure-blob-storage-net-core/-*/
         }
     }
 }
