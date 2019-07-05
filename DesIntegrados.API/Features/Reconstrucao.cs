@@ -6,9 +6,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Sandboxable;
-using Sandboxable.Microsoft.WindowsAzure.Storage;
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage;
 
 namespace DesIntegrados.API.Features
 {
@@ -123,7 +124,7 @@ namespace DesIntegrados.API.Features
             }
         }
 
-        static void CriaImagem()
+        static async void CriaImagem()
         {
             g = new Matrix(50816, 1);
             for (int i = 0; i < 50816; i++)//constroi matrix do vetor de entrada
@@ -156,6 +157,22 @@ namespace DesIntegrados.API.Features
             //string storageConnection = CloudConfigurationManager.GetSetting("TkgOnGxOzNj+AS//xEMoXTQUZIFCsjp/C54DnkjWwddJpDuubv56ve0/pWgyx+dAtafX8m8RzAhGql4ZlOiAeQ==")
             //CloudStorageAccount cloud
             bmp.Save(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
+            var storageCredentials = new StorageCredentials("desintegrados", "TkgOnGxOzNj+AS//xEMoXTQUZIFCsjp/C54DnkjWwddJpDuubv56ve0/pWgyx+dAtafX8m8RzAhGql4ZlOiAeQ==");
+            var cloudStorageAccount = new CloudStorageAccount(storageCredentials, true);
+            var blobClient = cloudStorageAccount.CreateCloudBlobClient();
+
+            //Create Reference to Azure Blob
+            //CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
+
+            //The next 2 lines create if not exists a container named "democontainer"
+            CloudBlobContainer container = blobClient.GetContainerReference("desintegradosimages");
+            //await container.CreateIfNotExistsAsync();
+
+            //container.CreateIfNotExists();
+
+            //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference("desintegradosimages.bmp");
+            await blockBlob.UploadFromFileAsync(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
         }
     }
 }
