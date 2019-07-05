@@ -157,24 +157,24 @@ namespace DesIntegrados.API.Features
             //string storageConnection = CloudConfigurationManager.GetSetting("TkgOnGxOzNj+AS//xEMoXTQUZIFCsjp/C54DnkjWwddJpDuubv56ve0/pWgyx+dAtafX8m8RzAhGql4ZlOiAeQ==")
             //CloudStorageAccount cloud
             bmp.Save(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
-            var storageCredentials = new StorageCredentials("desintegrados", "TkgOnGxOzNj+AS//xEMoXTQUZIFCsjp/C54DnkjWwddJpDuubv56ve0/pWgyx+dAtafX8m8RzAhGql4ZlOiAeQ==");
-            var cloudStorageAccount = new CloudStorageAccount(storageCredentials, true);
-            var blobClient = cloudStorageAccount.CreateCloudBlobClient();
+            ///////////*var storageCredentials = new StorageCredentials("desintegrados", "TkgOnGxOzNj+AS//xEMoXTQUZIFCsjp/C54DnkjWwddJpDuubv56ve0/pWgyx+dAtafX8m8RzAhGql4ZlOiAeQ==");
+            //////////var cloudStorageAccount = new CloudStorageAccount(storageCredentials, true);
+            //////////var blobClient = cloudStorageAccount.CreateCloudBlobClient();
 
-            //Create Reference to Azure Blob
-            //CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
+            ////////////Create Reference to Azure Blob
+            ////////////CloudBlobClient blobClient = storageacc.CreateCloudBlobClient();
 
-            //The next 2 lines create if not exists a container named "democontainer"
-            CloudBlobContainer container = blobClient.GetContainerReference("desintegradosimages");
-            //await container.CreateIfNotExistsAsync();
+            ////////////The next 2 lines create if not exists a container named "democontainer"
+            //////////CloudBlobContainer container = blobClient.GetContainerReference("desintegradosimages");
+            ////////////await container.CreateIfNotExistsAsync();
 
-            //container.CreateIfNotExists();
+            ////////////container.CreateIfNotExists();
 
-            //The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
-            CloudBlockBlob blockBlob = container.GetBlockBlobReference("desintegradosimages.bmp");
-            await blockBlob.UploadFromFileAsync(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
+            ////////////The next 7 lines upload the file test.txt with the name DemoBlob on the container "democontainer"
+            //////////CloudBlockBlob blockBlob = container.GetBlockBlobReference("desintegradosimages.bmp");
+            //////////await blockBlob.UploadFromFileAsync(@"C:\Users\Calleb Malinoski\Desktop\img2.bmp");
 
-            /*https://dotnetcoretutorials.com/2017/06/17/using-azure-blob-storage-net-core/-*/
+            ///////////*https://dotnetcoretutorials.com/2017/06/17/using-azure-blob-storage-net-core/-*/*/
         }
     }
 }
